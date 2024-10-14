@@ -42,12 +42,15 @@
   </dependencies>
 
   <distributionManagement>
-  <repository>
-    <id>github</id>
-    <name>GitHub alejandro-vn-jvillalta Apache Maven Packages</name>
-    <url>https://maven.pkg.github.com/alejandro-vn-jvillalta/ArtifactsTry1</url>
-  </repository>
-</distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub OWNER Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/alejandro-vn-jvillalta/ArtifactsTry1</url>
+      <snapshots>
+                <enabled>true</enabled> <!-- Habilita SNAPSHOTS -->
+      </snapshots>
+    </repository>
+  </distributionManagement>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
