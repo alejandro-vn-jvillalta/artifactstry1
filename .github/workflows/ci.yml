@@ -19,3 +19,5 @@ jobs:
         run: cd my-app && mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_VILLALTA }}
+
+          
