@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '11'
           distribution: 'temurin'
       - name: Publish package
-        run: mvn --batch-mode deploy
+        run: cd my-app && mvn --batch-mode deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_VILLALTA}}
+          GITHUB_TOKEN: ${{ secrets.SECRET_VILLALTA }}
