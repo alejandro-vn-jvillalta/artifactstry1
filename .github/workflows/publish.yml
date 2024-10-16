@@ -1,4 +1,4 @@
-name: Publish package
+name: Publish Python Package
 
 on:
   push:
@@ -8,28 +8,26 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel
 
-    - name: Build package
-      run: python setup.py sdist bdist_wheel
+      - name: Build package
+        run: python setup.py sdist bdist_wheel
 
-    - name: Attempt to publish to GitHub Packages
-      run: |
-        echo "Publishing to GitHub Packages (this will fail)"
-        # Simulate the publish command
-        # Normally you would use:
-        # python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
-        echo "This is where the package would be uploaded."
+      - name: Publish package
+        run: |
+          echo "Attempting to publish to GitHub Packages..."
+          python -m twine upload --repository-url https://uploads.github.com/packages/OWNER/REPO my_package/dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
