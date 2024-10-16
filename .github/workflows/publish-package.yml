@@ -37,4 +37,4 @@ jobs:
           </settings>" > $HOME/.m2/settings.xml
 
       - name: Publish package
-        run: cd my-app && mvn --batch-mode deploy
+        run: cd my-complex-app && mvn --batch-mode deploy
