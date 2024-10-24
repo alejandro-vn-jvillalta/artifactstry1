@@ -25,6 +25,11 @@ jobs:
         echo "always-auth=true" >> ~/.npmrc
         cat ~/.npmrc  
         
+    - name: Debug Token
+      run: echo "Token is set"  # Asegúrate de que el token esté disponible
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+   
     - name: Install dependencies
       run: npm install
 
