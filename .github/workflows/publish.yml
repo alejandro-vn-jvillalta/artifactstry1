@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: '16'
         registry-url: 'https://npm.pkg.github.com/@villalta'
+    - name: Create .npmrc
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
 
     - name: Install dependencies
       run: npm install
