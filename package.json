@@ -8,7 +8,7 @@
     "url": "https://github.com/alejandro-vn-jvillalta/artifactstry1.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@villalta"
   },
   "author": "Alejandro Juan Villalta",
   "license": "MIT"
