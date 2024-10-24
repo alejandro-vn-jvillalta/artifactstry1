@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -18,12 +18,18 @@ jobs:
       with:
         node-version: '16'
         registry-url: 'https://npm.pkg.github.com/@villalta'
+        cache: 'npm'
+
+    - name: Configure npm for GitHub Packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
+        echo "@villalta:registry=https://npm.pkg.github.com" >> ~/.npmrc
+        echo "always-auth=true" >> ~/.npmrc
 
     - name: Install dependencies
       run: npm install
 
     - name: Publish to GitHub Packages
-      run: npm publish --access public
+      run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-  
+        NPM_CONFIG_TOKEN: ${{ secrets.GH_TOKEN }}
