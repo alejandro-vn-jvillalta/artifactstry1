@@ -1,5 +1,5 @@
 {
-  "name": "@alejandro-vn-villalta/my-npm-package",
+  "name": "my-npm-package",
   "version": "1.0.1",
   "description": "Mi primer paquete npm",
   "main": "index.js",
