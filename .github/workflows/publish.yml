@@ -24,16 +24,14 @@ jobs:
         echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
         echo "always-auth=true" >> ~/.npmrc
         cat ~/.npmrc  
-        
-    - name: Debug Token
-      run: echo "Token is set"  # Asegúrate de que el token esté disponible
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
    
     - name: Install dependencies
       run: npm install
 
-    - name: Publish to GitHub Packages
-      run: npm publish
+    - name: Debug npm publish
+      run: |
+        echo "Publishing package..."
+        npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+
