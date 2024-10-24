@@ -19,19 +19,13 @@ jobs:
         node-version: '16'
         registry-url: 'https://npm.pkg.github.com/@villalta'
 
-    - name: npm login
-      run: |
-        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
-        npm login --scope=@villalta --auth-type=legacy --registry=https://npm.pkg.github.com <<EOF
-        alejandro-vn-jvillalta
-        ${{ secrets.GH_TOKEN }}
-        PUBLIC-EMAIL-ADDRESS
-        EOF
-        
+    - name: Configure npm for GitHub Packages
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
+
     - name: Install dependencies
       run: npm install
 
     - name: Publish to GitHub Packages
-      run: npm publish
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
